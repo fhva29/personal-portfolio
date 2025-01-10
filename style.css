@@ -1,6 +1,6 @@
-/* Cores do Terminal com Paleta Roxa */
+/* Cores do Terminal com Paleta Roxa - Atualizado para Background Preto Elegante */
 :root {
-    --bg-color: #1e1e2e;          /* Fundo terminal (roxo escuro) */
+    --bg-color: #121212;          /* Fundo terminal (preto elegante) */
     --text-color: #ffffff;        /* Texto padrão (branco) */
     --prompt-color: #cba6f7;      /* Prompt (roxo claro) */
     --cmd-color: #89b4fa;         /* Comando (azul claro) */
@@ -18,6 +18,24 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative; /* For absolute positioning of buttons */
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px; /* Largura fina para parecer uma barra */
+    height: 1em; /* Altura igual à linha de texto */
+    background-color: var(--text-color); /* Cor do cursor */
+    margin-left: 2px; /* Espaçamento entre o texto e o cursor */
+    animation: blink 1s infinite; /* Animação de piscar */
+    vertical-align: bottom; /* Alinha o cursor com a base do texto */
 }
 
 /* Header */
@@ -26,6 +44,7 @@ body {
     padding: 1rem 0;
     background: var(--bg-color);
     border-bottom: 2px solid var(--border-color);
+    position: relative;
 }
 
 .terminal-header h1 {
@@ -63,6 +82,7 @@ body {
     background: #8ae234; /* Verde */
 }
 
+/* Language Toggle Button */
 .language-btn {
     position: absolute;
     top: 1rem;
@@ -82,10 +102,31 @@ body {
     color: var(--bg-color);
 }
 
+/* Theme Toggle Button */
+.theme-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--bg-color);
+    color: var(--prompt-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: var(--prompt-color);
+    color: var(--bg-color);
+}
+
 /* Terminal Corpo */
 .terminal-body {
     flex-grow: 1;
     padding: 2rem;
+    position: relative;
 }
 
 .terminal {
@@ -95,19 +136,34 @@ body {
     border-radius: 8px;
 }
 
+/* Lines */
 .line {
     margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInLine 1s forwards;
+}
+
+@keyframes fadeInLine {
+    to { opacity: 1; }
 }
 
 .prompt {
     color: var(--prompt-color);
     font-weight: bold;
     margin-right: 0.5rem;
+    font-size: 1.2rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .text {
     display: inline-block;
     color: var(--text-color);
+    font-size: 1rem;
 }
 
 .line .prompt + .text {
@@ -127,13 +183,13 @@ body {
     padding: 1rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    background-color: #282a36; /* Fundo dos itens (roxo médio escuro) */
+    background-color: #1f1f2e; /* Fundo dos itens (preto roxo escuro) */
     transition: transform 0.3s, background-color 0.3s;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
-    background-color: #44475a; /* Fundo mais claro ao passar o mouse */
+    background-color: #2c2c3e; /* Fundo mais claro ao passar o mouse */
 }
 
 .project-item .cmd {
@@ -151,21 +207,27 @@ body {
 }
 
 .project-link {
+    display: inline-block;
     text-decoration: none;
     color: var(--cmd-color);
     font-weight: bold;
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 0.3rem 0.6rem;
+    background-color: var(--border-color);
+    border-radius: 4px;
 }
 
 .project-link:hover {
-    color: var(--accent-color);
+    color: var(--bg-color);
+    background-color: var(--cmd-color);
 }
 
 .project-link.disabled {
     color: var(--disabled-color);
     cursor: not-allowed;
     text-decoration: none;
+    background-color: transparent;
 }
 
 /* Links de Contato */
@@ -182,27 +244,6 @@ body {
 }
 
 .social-link i {
-    margin-right: 30px;              /* Espaçamento entre o ícone e o texto */
-}
-
-/* Remover cor diferenciada para link já clicado (visited) */
-.social-link:link,
-.social-link:visited,
-.social-link:hover,
-.social-link:active {
-    color: var(--cmd-color); /* Mesma cor para todos os estados */
-    text-decoration: none;
-    transition: color 0.3s, text-decoration 0.3s;
-}
-
-/* No hover, mantemos apenas a troca de cor, sem sublinhado (ou sublinhado se preferir) */
-.social-link:hover {
-    color: var(--accent-color);
-    /* text-decoration: underline;  // habilite se quiser sublinhar no hover */
-}
-
-/* Espaçamento entre ícone e texto (se houver texto) */
-.social-link i {
     margin-right: 4px; /* Ajuste conforme desejar */
 }
 
@@ -211,4 +252,38 @@ body {
     text-align: center;
     padding: 1rem 0;
     border-top: 2px solid var(--border-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .terminal-body {
+        padding: 1rem;
+    }
+
+    .project-item {
+        padding: 0.8rem;
+    }
+
+    .language-btn, .theme-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .terminal-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .terminal-header p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Smooth Hover Transitions */
+.project-item, .project-link {
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+/* Text Shadows for Depth */
+.text, .prompt, .cmd, .project-link, .social-link {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
 }
