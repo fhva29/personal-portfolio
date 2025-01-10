@@ -1,0 +1,214 @@
+/* Cores do Terminal com Paleta Roxa */
+:root {
+    --bg-color: #1e1e2e;          /* Fundo terminal (roxo escuro) */
+    --text-color: #ffffff;        /* Texto padrão (branco) */
+    --prompt-color: #cba6f7;      /* Prompt (roxo claro) */
+    --cmd-color: #89b4fa;         /* Comando (azul claro) */
+    --accent-color: #f38ba8;      /* Link hover (rosa avermelhado) */
+    --disabled-color: #6c7086;    /* Links desabilitados (cinza roxo) */
+    --border-color: #575268;      /* Bordas (roxo médio) */
+}
+
+/* Corpo */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header */
+.terminal-header {
+    text-align: center;
+    padding: 1rem 0;
+    background: var(--bg-color);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.terminal-header h1 {
+    color: var(--prompt-color);
+    font-size: 1.5rem;
+}
+
+.terminal-header p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.terminal-header-bar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+}
+
+.terminal-header-bar .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.terminal-header-bar .red {
+    background: #ef2929; /* Vermelho */
+}
+
+.terminal-header-bar .yellow {
+    background: #fce94f; /* Amarelo */
+}
+
+.terminal-header-bar .green {
+    background: #8ae234; /* Verde */
+}
+
+.language-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--bg-color);
+    color: var(--prompt-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-btn:hover {
+    background-color: var(--prompt-color);
+    color: var(--bg-color);
+}
+
+/* Terminal Corpo */
+.terminal-body {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+.terminal {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.line {
+    margin-bottom: 1.5rem;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.text {
+    display: inline-block;
+    color: var(--text-color);
+}
+
+.line .prompt + .text {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Projetos */
+.project-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #282a36; /* Fundo dos itens (roxo médio escuro) */
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    background-color: #44475a; /* Fundo mais claro ao passar o mouse */
+}
+
+.project-item .cmd {
+    color: var(--cmd-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.project-item p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.project-link {
+    text-decoration: none;
+    color: var(--cmd-color);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    color: var(--accent-color);
+}
+
+.project-link.disabled {
+    color: var(--disabled-color);
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+/* Links de Contato */
+.social-link {
+    color: var(--cmd-color);         /* Azul claro */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.social-link:hover {
+    color: var(--accent-color);      /* Rosa avermelhado */
+    text-decoration: underline;
+}
+
+.social-link i {
+    margin-right: 30px;              /* Espaçamento entre o ícone e o texto */
+}
+
+/* Remover cor diferenciada para link já clicado (visited) */
+.social-link:link,
+.social-link:visited,
+.social-link:hover,
+.social-link:active {
+    color: var(--cmd-color); /* Mesma cor para todos os estados */
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* No hover, mantemos apenas a troca de cor, sem sublinhado (ou sublinhado se preferir) */
+.social-link:hover {
+    color: var(--accent-color);
+    /* text-decoration: underline;  // habilite se quiser sublinhar no hover */
+}
+
+/* Espaçamento entre ícone e texto (se houver texto) */
+.social-link i {
+    margin-right: 4px; /* Ajuste conforme desejar */
+}
+
+/* Footer */
+.terminal-footer {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 2px solid var(--border-color);
+}
