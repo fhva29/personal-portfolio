@@ -82,13 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para aplicar o efeito de digitação
   function typeEffect(text, element, callback) {
       let index = 0;
-      element.textContent = ""; // Limpa o texto atual
+      element.innerHTML = ""; // Limpa o conteúdo atual
 
       function type() {
           if (index < text.length) {
-              element.textContent += text.charAt(index);
+              element.innerHTML += text.charAt(index);
               index++;
-              typingTimeout = setTimeout(type, 30);
+              typingTimeout = setTimeout(type, 20);
           } else {
               isTyping = false;
               if (callback) callback();
@@ -176,22 +176,22 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTexts();
   }
 
-  // Função para alternar o tema (opcional)
-  // function toggleTheme() {
-  //     document.documentElement.classList.toggle("light-theme");
-  //     // Change button icon
-  //     if (document.documentElement.classList.contains("light-theme")) {
-  //         themeToggleButton.textContent = "🌞";
-  //     } else {
-  //         themeToggleButton.textContent = "🌙";
-  //     }
-  // }
+  // Função para alternar o tema
+  function toggleTheme() {
+      document.documentElement.classList.toggle("light-theme");
+      // Change button icon
+      if (document.documentElement.classList.contains("light-theme")) {
+          themeToggleButton.textContent = "🌞";
+      } else {
+          themeToggleButton.textContent = "🌙";
+      }
+  }
 
   // Evento de clique no botão de idioma
   languageToggleButton.addEventListener("click", toggleLanguage);
 
-  // Evento de clique no botão de tema (opcional)
-  // themeToggleButton.addEventListener("click", toggleTheme);
+  // Evento de clique no botão de tema
+  themeToggleButton.addEventListener("click", toggleTheme);
 
   // Carrega os textos ao inicializar
   updateTexts();
