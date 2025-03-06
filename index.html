@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francisco Heitor Vasconcelos | Backend Python Developer</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="src/favicon.png">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-    <!-- DevIcons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francisco Heitor Vasconcelos | Backend Python Developer</title>
+  <link rel="icon" type="image/png" href="src/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header class="terminal-header">
-        <div class="terminal-header-bar">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-        </div>
-        <h1>> Francisco Heitor Vasconcelos</h1>
-        <p>Backend Python Developer | APIs Escaláveis & Microsserviços</p>
-        <div class="button-container">
-            <button id="language-toggle" class="language-btn">EN</button>
-            <button id="theme-toggle" class="theme-btn">🌙</button>
-        </div>
-    </header>
-
-    <main class="terminal-body">
-        <section class="terminal">
-            <!-- Sobre Mim -->
-            <div class="line">
-                <span class="prompt">> Sobre Mim:</span>
-                <span class="text" id="sobre-mim-text"></span><span class="cursor"></span>
-            </div>
-
-            <!-- Projetos -->
-            <div class="line">
-                <span class="prompt">> Projetos:</span>
-                <div class="project-list" id="project-list">
-                    <!-- Os projetos serão inseridos dinamicamente via JavaScript -->
-                </div>
-            </div>
-
-            <!-- Contato -->
-            <div class="line">
-                <span class="prompt">> Contato:</span>
-                <ul>
-                    <!-- Este conteúdo será substituído pelo JavaScript -->
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer class="terminal-footer">
-        <p>&copy; 2025 Francisco Heitor Vasconcelos. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+  <header class="terminal-header">
+      <div class="terminal-header-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+      </div>
+      <h1>> Francisco Heitor Vasconcelos</h1>
+      <p>Backend Python Developer | APIs Escaláveis & Microsserviços</p>
+      <div class="button-container">
+          <button id="language-toggle" class="language-btn">EN</button>
+          <button id="theme-toggle" class="theme-btn">🌙</button>
+      </div>
+  </header>
+  <main class="terminal-body">
+      <section class="terminal">
+          <!-- Sobre Mim -->
+          <div class="line" id="sobre-mim">
+              <span class="prompt">> Sobre Mim:</span>
+              <span class="text" id="sobre-mim-text"></span><span class="cursor"></span>
+          </div>
+          <!-- Competências Técnicas -->
+          <div class="line" id="skills">
+              <span class="prompt" id="skills-title"></span>
+              <ul id="skills-list"></ul>
+          </div>
+          <!-- Experiência -->
+          <div class="line" id="experience">
+              <span class="prompt" id="experience-title"></span>
+              <div id="experience-list"></div>
+          </div>
+          <!-- Projetos -->
+          <div class="line" id="projects">
+              <span class="prompt">> Projetos:</span>
+              <div class="project-list" id="project-list">
+              </div>
+          </div>
+          <!-- Educação -->
+          <div class="line" id="education">
+              <span class="prompt" id="education-title"></span>
+              <ul id="education-list"></ul>
+          </div>
+          <!-- Certificação -->
+          <div class="line" id="certification">
+              <span class="prompt" id="certification-title"></span>
+              <ul id="certification-list"></ul>
+          </div>
+          <!-- Contato -->
+          <div class="line" id="contact">
+              <span class="prompt">> Contato:</span>
+              <ul id="contact-list"></ul>
+          </div>
+      </section>
+  </main>
+  <footer class="terminal-footer">
+      <p>&copy; 2025 Francisco Heitor Vasconcelos. Todos os direitos reservados.</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
-
 </html>

@@ -1,23 +1,23 @@
 /* Cores do Terminal com Paleta Roxa - Atualizado para Background Preto Elegante */
 :root {
-    --bg-color: #121212;          /* Fundo terminal (preto elegante) */
-    --text-color: #ffffff;        /* Texto padrão (branco) */
-    --prompt-color: #cba6f7;      /* Prompt (roxo claro) */
-    --cmd-color: #89b4fa;         /* Comando (azul claro) */
-    --accent-color: #f38ba8;      /* Link hover (rosa avermelhado) */
-    --disabled-color: #6c7086;    /* Links desabilitados (cinza roxo) */
-    --border-color: #575268;      /* Bordas (roxo médio) */
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --prompt-color: #cba6f7;
+    --cmd-color: #89b4fa;
+    --accent-color: #f38ba8;
+    --disabled-color: #6c7086;
+    --border-color: #575268;
 }
 
 /* Tema Claro */
 .light-theme {
-    --bg-color: #f5f5f5;          /* Fundo terminal (cinza muito claro) */
-    --text-color: #1a1a1a;        /* Texto padrão (cinza escuro) */
-    --prompt-color: #6a0dad;      /* Prompt (roxo suave) */
-    --cmd-color: #4a90e2;         /* Comando (azul suave) */
-    --accent-color: #e06c75;      /* Link hover (rosa suave) */
-    --disabled-color: #b0b0b0;    /* Links desabilitados (cinza) */
-    --border-color: #c0c0c0;      /* Bordas (cinza suave) */
+    --bg-color: #f5f5f5;
+    --text-color: #1a1a1a;
+    --prompt-color: #6a0dad;
+    --cmd-color: #4a90e2;
+    --accent-color: #e06c75;
+    --disabled-color: #b0b0b0;
+    --border-color: #c0c0c0;
 }
 
 /* Corpo */
@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative; /* For absolute positioning of buttons */
+    position: relative;
 }
 
 /* Blinking Cursor */
@@ -41,12 +41,12 @@ body {
 
 .cursor {
     display: inline-block;
-    width: 2px; /* Largura fina para parecer uma barra */
-    height: 1em; /* Altura igual à linha de texto */
-    background-color: var(--text-color); /* Cor do cursor */
-    margin-left: 2px; /* Espaçamento entre o texto e o cursor */
-    animation: blink 1s infinite; /* Animação de piscar */
-    vertical-align: bottom; /* Alinha o cursor com a base do texto */
+    width: 2px;
+    height: 1em;
+    background-color: var(--text-color);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    vertical-align: bottom;
 }
 
 /* Header */
@@ -58,7 +58,6 @@ body {
     position: relative;
 }
 
-/* Terminal Header Bar */
 .terminal-header-bar {
     display: flex;
     justify-content: flex-start;
@@ -73,18 +72,17 @@ body {
 }
 
 .terminal-header-bar .red {
-    background: #ef2929; /* Vermelho */
+    background: #ef2929;
 }
 
 .terminal-header-bar .yellow {
-    background: #fce94f; /* Amarelo */
+    background: #fce94f;
 }
 
 .terminal-header-bar .green {
-    background: #8ae234; /* Verde */
+    background: #8ae234;
 }
 
-/* Header Buttons Container */
 .button-container {
     position: absolute;
     top: 1rem;
@@ -93,7 +91,6 @@ body {
     gap: 0.5rem;
 }
 
-/* Language Toggle Button e Theme Toggle Button */
 .language-btn, .theme-btn {
     background-color: var(--bg-color);
     color: var(--prompt-color);
@@ -172,21 +169,21 @@ body {
     padding: 1rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    background-color: #1f1f2e; /* Fundo dos itens (preto roxo escuro) */
+    background-color: #1f1f2e;
     transition: transform 0.3s, background-color 0.3s;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
-    background-color: #2c2c3e; /* Fundo mais claro ao passar o mouse */
+    background-color: #2c2c3e;
 }
 
 .light-theme .project-item {
-    background-color: #e0e0e0; /* Fundo mais claro para o tema claro */
+    background-color: #e0e0e0;
 }
 
 .light-theme .project-item:hover {
-    background-color: #d0d0d0; /* Fundo ainda mais claro ao passar o mouse */
+    background-color: #d0d0d0;
 }
 
 .project-item .cmd {
@@ -227,21 +224,35 @@ body {
     background-color: transparent;
 }
 
+/* Listas das novas seções */
+#skills-list li,
+#education-list li,
+#certification-list li {
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
+
+/* Itens de Experiência */
+.experience-item {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
 /* Links de Contato */
 .social-link {
-    color: var(--cmd-color);         /* Azul claro */
+    color: var(--cmd-color);
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s, text-decoration 0.3s;
 }
 
 .social-link:hover {
-    color: var(--accent-color);      /* Rosa avermelhado */
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
 .social-link i {
-    margin-right: 4px; /* Ajuste conforme desejar */
+    margin-right: 4px;
 }
 
 /* Footer */
@@ -251,29 +262,24 @@ body {
     border-top: 2px solid var(--border-color);
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
     .terminal-body {
         padding: 1rem;
     }
-
     .project-item {
         padding: 0.8rem;
     }
-
     .language-btn, .theme-btn {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
     }
-
     .terminal-header h1 {
         font-size: 1.2rem;
     }
-
     .terminal-header p {
         font-size: 0.9rem;
     }
-
     .button-container {
         top: 0.5rem;
         right: 0.5rem;
