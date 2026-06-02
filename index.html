@@ -3,70 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Francisco Heitor Vasconcelos, desenvolvedor backend Python focado em APIs, sistemas distribuídos, dados, automações e software pronto para produção.">
+  <meta name="theme-color" content="#0b1020">
+  <meta property="og:title" content="Francisco Heitor Vasconcelos | Backend Python Developer">
+  <meta property="og:description" content="Backend systems, APIs, data modeling, integrations, automation, reliability and production-ready software.">
+  <meta property="og:type" content="website">
   <title>Francisco Heitor Vasconcelos | Backend Python Developer</title>
-  <link rel="icon" type="image/png" href="src/favicon.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="terminal-header">
-      <div class="terminal-header-bar">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
+  <a class="skip-link" href="#main-content">Pular para conteúdo</a>
+
+  <header class="site-header" aria-label="Cabeçalho do portfolio">
+    <nav class="topbar" aria-label="Controles do site">
+      <div class="terminal-dots" aria-hidden="true">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
       </div>
-      <h1>> Francisco Heitor Vasconcelos</h1>
-      <p>Backend Python Developer | APIs Escaláveis & Microsserviços</p>
-      <div class="button-container">
-          <button id="language-toggle" class="language-btn">EN</button>
-          <button id="theme-toggle" class="theme-btn">🌙</button>
+      <div class="controls">
+        <button id="language-toggle" class="control-btn" type="button">EN</button>
+        <button id="theme-toggle" class="control-btn" type="button" aria-pressed="false">Light</button>
       </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow" id="hero-eyebrow"></p>
+      <h1 id="hero-title"></h1>
+      <p class="hero-subtitle" id="hero-subtitle"></p>
+      <div class="hero-tags" id="hero-tags" aria-label="Áreas de foco"></div>
+      <div class="hero-actions">
+        <a class="primary-link" href="#projects" id="projects-cta"></a>
+        <a class="secondary-link" href="#contact" id="contact-cta"></a>
+      </div>
+    </section>
   </header>
-  <main class="terminal-body">
-      <section class="terminal">
-          <!-- Sobre Mim -->
-          <div class="line" id="sobre-mim">
-              <span class="prompt">> Sobre Mim:</span>
-              <span class="text" id="sobre-mim-text"></span><span class="cursor"></span>
-          </div>
-          <!-- Competências Técnicas -->
-          <div class="line" id="skills">
-              <span class="prompt" id="skills-title"></span>
-              <ul id="skills-list"></ul>
-          </div>
-          <!-- Experiência -->
-          <div class="line" id="experience">
-              <span class="prompt" id="experience-title"></span>
-              <div id="experience-list"></div>
-          </div>
-          <!-- Projetos -->
-          <div class="line" id="projects">
-              <span class="prompt">> Projetos:</span>
-              <div class="project-list" id="project-list">
-              </div>
-          </div>
-          <!-- Educação -->
-          <div class="line" id="education">
-              <span class="prompt" id="education-title"></span>
-              <ul id="education-list"></ul>
-          </div>
-          <!-- Certificação -->
-          <div class="line" id="certification">
-              <span class="prompt" id="certification-title"></span>
-              <ul id="certification-list"></ul>
-          </div>
-          <!-- Contato -->
-          <div class="line" id="contact">
-              <span class="prompt">> Contato:</span>
-              <ul id="contact-list"></ul>
-          </div>
-      </section>
+
+  <main class="page-shell" id="main-content">
+    <section class="terminal-panel about-grid" aria-labelledby="about-title">
+      <div>
+        <h2 class="prompt" id="about-title"></h2>
+        <p class="typing-text" id="about-text"></p>
+      </div>
+      <aside class="system-card" aria-labelledby="system-title">
+        <h2 id="system-title"></h2>
+        <dl id="system-profile"></dl>
+      </aside>
+    </section>
+
+    <section class="terminal-panel" aria-labelledby="skills-title">
+      <h2 class="prompt" id="skills-title"></h2>
+      <div class="skills-grid" id="skills-grid"></div>
+    </section>
+
+    <section class="terminal-panel" aria-labelledby="experience-title">
+      <h2 class="prompt" id="experience-title"></h2>
+      <div class="timeline" id="experience-list"></div>
+    </section>
+
+    <section class="terminal-panel" id="projects" aria-labelledby="projects-title">
+      <h2 class="prompt" id="projects-title"></h2>
+      <div class="project-grid" id="project-list"></div>
+    </section>
+
+    <section class="info-grid" aria-label="Formação e contato">
+      <div class="terminal-panel compact-panel" aria-labelledby="education-title">
+        <h2 class="prompt" id="education-title"></h2>
+        <ul class="clean-list" id="education-list"></ul>
+      </div>
+
+      <div class="terminal-panel compact-panel" aria-labelledby="certification-title">
+        <h2 class="prompt" id="certification-title"></h2>
+        <ul class="clean-list" id="certification-list"></ul>
+      </div>
+
+      <div class="terminal-panel compact-panel" id="contact" aria-labelledby="contact-title">
+        <h2 class="prompt" id="contact-title"></h2>
+        <p class="contact-copy" id="contact-copy"></p>
+        <ul class="clean-list contact-list" id="contact-list"></ul>
+      </div>
+    </section>
   </main>
-  <footer class="terminal-footer">
-      <p>&copy; 2025 Francisco Heitor Vasconcelos. Todos os direitos reservados.</p>
+
+  <footer class="site-footer">
+    <p id="footer-text"></p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

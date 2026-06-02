@@ -1,306 +1,495 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Textos para cada idioma, incluindo as novas seções
-    const texts = {
-      "pt-br": {
-        header: "Francisco Heitor Vasconcelos",
-        subHeader: "Backend Python Developer | APIs Escaláveis & Microsserviços",
-        about: "Sou um Desenvolvedor Backend Python com experiência em desenvolvimento de APIs escaláveis, microsserviços e sistemas distribuídos. Minha abordagem foca em entregar soluções robustas e eficientes, utilizando frameworks como Django, Flask e FastAPI.",
-        skills: {
-          title: "Competências Técnicas:",
-          items: [
-            "Python, Django, Flask, FastAPI",
-            "APIs Escaláveis & Microsserviços",
-            "Banco de Dados (PostgreSQL, Redis, MongoDB)",
-            "Docker, CI/CD, Git, GitHub",
-            "Celery, RabbitMQ, Redis"
-          ]
-        },
-        experience: {
-          title: "Experiência:",
-          items: [
-            {
-              role: "Backend Python Developer",
-              company: "Ouronova",
-              period: "2023 – Presente",
-              description: "Desenvolvimento de aplicações web e automações usando Django, gerenciamento de bancos de dados e implementação de filas com Celery."
-            },
-            {
-              role: "Software Engineer",
-              company: "Sidia Institute of Science and Technology",
-              period: "2022 – 2023",
-              description: "Desenvolvimento de automações e aplicações web com Django e Flask, administração de bancos de dados e integração de sistemas distribuídos."
-            }
-          ]
-        },
-        education: {
-          title: "Educação:",
-          items: [
-            {
-              degree: "Bacharel em Engenharia Elétrica",
-              institution: "Universidade Federal do Ceará",
-              period: "2014 – 2019"
-            }
-          ]
-        },
-        certification: {
-          title: "Certificação:",
-          items: [
-            {
-              name: "EF SET Certificate",
-              detail: "C2 Proficient in English – EF Standard English Test 2025",
-              link: "https://cert.efset.org/9tNcDt"
-            }
-          ]
-        },
-        projects: [
-          {
-            title: "Wellnova.ai",
-            description: "A Wellnova é uma plataforma de software que utiliza inteligência artificial para otimizar a gestão da integridade de poços de petróleo e gás. Ela auxilia operadores e prestadores de serviços em diversas etapas, como construção de poços, intervenções e campanhas de abandono (P&A).",
-            linkText: "Visitar Site",
-            linkHref: "https://wellnova.ai/",
-            iconClass: "fas fa-robot"
-          },
-          {
-            title: "Currency Exchange API",
-            description: "Uma API robusta desenvolvida para fornecer taxas de câmbio, dados históricos e realizar conversões de moedas em tempo real. Implementada em Python utilizando o framework FastAPI.",
-            linkText: "Ver no GitHub",
-            linkHref: "https://github.com/fhva29/currency-exchange-api",
-            iconClass: "fab fa-github"
-          }
-        ],
-        contact: "Contato",
+    const profileLinks = {
         email: "fhva.dev@gmail.com",
-        linkedin: "Linkedin",
-        github: "Github",
-        button: "EN"
-      },
-      "en": {
-        header: "Francisco Heitor Vasconcelos",
-        subHeader: "Backend Python Developer | Scalable APIs & Microservices",
-        about: "I am a Backend Python Developer with experience in developing scalable APIs, microservices, and distributed systems. My approach focuses on delivering robust and efficient solutions using frameworks like Django, Flask, and FastAPI.",
-        skills: {
-          title: "Technical Skills:",
-          items: [
-            "Python, Django, Flask, FastAPI",
-            "Scalable APIs & Microservices",
-            "Database Management (PostgreSQL, Redis, MongoDB)",
-            "Docker, CI/CD, Git, GitHub",
-            "Celery, RabbitMQ, Redis"
-          ]
-        },
-        experience: {
-          title: "Experience:",
-          items: [
-            {
-              role: "Backend Python Developer",
-              company: "Ouronova",
-              period: "2023 – Present",
-              description: "Developing web applications and automations using Django, managing databases and implementing task queues with Celery."
-            },
-            {
-              role: "Software Engineer",
-              company: "Sidia Institute of Science and Technology",
-              period: "2022 – 2023",
-              description: "Developed automations and web applications using Django and Flask, administered databases, and integrated distributed systems."
-            }
-          ]
-        },
-        education: {
-          title: "Education:",
-          items: [
-            {
-              degree: "Bachelor in Electrical Engineering",
-              institution: "Federal University of Ceará",
-              period: "2014 – 2019"
-            }
-          ]
-        },
-        certification: {
-          title: "Certification:",
-          items: [
-            {
-              name: "EF SET Certificate",
-              detail: "C2 Proficient in English – EF Standard English Test 2025",
-              link: "https://cert.efset.org/9tNcDt"
-            }
-          ]
-        },
-        projects: [
-          {
-            title: "Wellnova.ai",
-            description: "Wellnova is a software platform that uses artificial intelligence to optimize the management of oil and gas well integrity. It assists operators and service providers in various stages such as well construction, interventions, and plug and abandonment (P&A) campaigns.",
-            linkText: "Visit Site",
-            linkHref: "https://wellnova.ai/",
-            iconClass: "fas fa-robot"
-          },
-          {
-            title: "Currency Exchange API",
-            description: "A robust API developed to provide exchange rates, historical data, and perform real-time currency conversions. Implemented in Python using the FastAPI framework.",
-            linkText: "View on GitHub",
-            linkHref: "https://github.com/fhva29/currency-exchange-api",
-            iconClass: "fab fa-github"
-          }
-        ],
-        contact: "Contact",
-        email: "fhva.dev@gmail.com",
-        linkedin: "Linkedin",
-        github: "Github",
-        button: "PT-BR"
-      }
+        linkedin: "https://www.linkedin.com/in/fhva",
+        github: "https://github.com/fhva29"
     };
-  
-    let currentLanguage = "pt-br";
-    let typingTimeout;
-    let isTyping = false;
-  
-    const sobreMimElement = document.getElementById("sobre-mim-text");
-    const languageToggleButton = document.getElementById("language-toggle");
-    const themeToggleButton = document.getElementById("theme-toggle");
-    const headerH1 = document.querySelector("header h1");
-    const headerP = document.querySelector("header p");
-    const projectListElement = document.getElementById("project-list");
-  
-    // Efeito de digitação
-    function typeEffect(text, element, callback) {
+
+    const texts = {
+        "pt-br": {
+            lang: "pt-br",
+            button: "EN",
+            themeLight: "Light",
+            themeDark: "Dark",
+            hero: {
+                eyebrow: "backend.systems -- production-ready",
+                title: "Francisco Heitor Vasconcelos",
+                subtitle: "Desenvolvedor Backend Python focado em APIs, automações, modelagem de dados e sistemas confiáveis para ambientes reais de negócio.",
+                tags: ["Python", "Django", "FastAPI", "PostgreSQL", "Celery", "Docker", "CI/CD"],
+                projectsCta: "Ver projetos",
+                contactCta: "Contato técnico"
+            },
+            about: {
+                title: "Sobre",
+                text: "Atuo construindo serviços backend, integrações e automações com atenção a contratos de API, persistência de dados, filas assíncronas e manutenção em produção. Meu foco é transformar requisitos de negócio em software organizado, testável e fácil de operar.",
+                systemTitle: "runtime.profile",
+                facts: [
+                    ["role", "Backend Python Developer"],
+                    ["focus", "APIs, dados, automação, confiabilidade"],
+                    ["style", "arquitetura limpa, comunicação objetiva"],
+                    ["delivery", "software pronto para produção"]
+                ]
+            },
+            skills: {
+                title: "Stack e práticas",
+                groups: [
+                    {
+                        name: "Backend",
+                        items: ["Python", "Django", "Flask", "FastAPI", "REST APIs", "microsserviços"]
+                    },
+                    {
+                        name: "Dados",
+                        items: ["PostgreSQL", "Redis", "MongoDB", "modelagem de dados", "consultas e persistência"]
+                    },
+                    {
+                        name: "Mensageria e automação",
+                        items: ["Celery", "RabbitMQ", "workers assíncronos", "rotinas automatizadas", "integrações"]
+                    },
+                    {
+                        name: "Entrega e engenharia",
+                        items: ["Docker", "Git/GitHub", "CI/CD", "testabilidade", "observabilidade", "developer experience"]
+                    }
+                ]
+            },
+            experience: {
+                title: "Experiência",
+                items: [
+                    {
+                        role: "Backend Python Developer",
+                        company: "Ouronova",
+                        period: "2023 - Presente",
+                        summary: "Desenvolvimento de aplicações web, automações e rotinas backend com Django, bancos de dados e filas com Celery.",
+                        bullets: [
+                            "Implementação de serviços e fluxos backend orientados a regras de negócio.",
+                            "Uso de bancos de dados e processamento assíncrono para operações recorrentes.",
+                            "Colaboração em sistemas que exigem manutenção, evolução e confiabilidade."
+                        ]
+                    },
+                    {
+                        role: "Software Engineer",
+                        company: "Sidia Institute of Science and Technology",
+                        period: "2022 - 2023",
+                        summary: "Desenvolvimento de automações e aplicações web com Django e Flask, administração de bancos de dados e integração de sistemas distribuídos.",
+                        bullets: [
+                            "Construção de ferramentas internas e automações para reduzir trabalho manual.",
+                            "Integração entre sistemas e serviços com foco em consistência operacional.",
+                            "Atuação em ambiente técnico com demandas de engenharia e comunicação clara."
+                        ]
+                    }
+                ]
+            },
+            projects: {
+                title: "Projetos",
+                items: [
+                    {
+                        title: "Wellnova.ai",
+                        type: "Plataforma SaaS | Oil & Gas",
+                        problem: "Apoia fluxos de integridade de poços, intervenções e campanhas de abandono com software especializado.",
+                        stack: ["Python", "Django", "dados técnicos", "automações", "integrações"],
+                        decisions: [
+                            "Modelagem de fluxos backend para processos complexos de domínio.",
+                            "Organização de dados e rotinas para suportar análise técnica.",
+                            "Ênfase em confiabilidade, rastreabilidade e evolução contínua."
+                        ],
+                        impact: "Demonstra experiência com produto real, domínio técnico específico e backend aplicado a operação crítica.",
+                        links: [{ label: "Site", href: "https://wellnova.ai/" }]
+                    },
+                    {
+                        title: "Currency Exchange API",
+                        type: "API backend | FastAPI",
+                        problem: "Fornece taxas de câmbio, histórico e conversões de moedas por meio de uma API clara e reutilizável.",
+                        stack: ["Python", "FastAPI", "REST", "integração externa", "dados históricos"],
+                        decisions: [
+                            "Contratos HTTP simples para consulta e conversão.",
+                            "Separação entre integração externa, regra de negócio e resposta da API.",
+                            "Foco em documentação, previsibilidade e consumo por outros serviços."
+                        ],
+                        impact: "Mostra construção de API, integração com dados externos e preocupação com developer experience.",
+                        links: [{ label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }]
+                    }
+                ]
+            },
+            education: {
+                title: "Formação",
+                items: ["Bacharel em Engenharia Elétrica - Universidade Federal do Ceará (2014 - 2019)"]
+            },
+            certification: {
+                title: "Certificação",
+                items: [
+                    {
+                        label: "EF SET Certificate: C2 Proficient in English - EF Standard English Test 2025",
+                        href: "https://cert.efset.org/9tNcDt"
+                    }
+                ]
+            },
+            contact: {
+                title: "Contato",
+                copy: "Aberto a conversas técnicas sobre backend, APIs, integrações, automações e sistemas em produção.",
+                links: [
+                    ["Email", `mailto:${profileLinks.email}`],
+                    ["LinkedIn", profileLinks.linkedin],
+                    ["GitHub", profileLinks.github]
+                ]
+            },
+            footer: "© 2026 Francisco Heitor Vasconcelos. Portfolio backend em HTML, CSS e JavaScript puro."
+        },
+        en: {
+            lang: "en",
+            button: "PT-BR",
+            themeLight: "Light",
+            themeDark: "Dark",
+            hero: {
+                eyebrow: "backend.systems -- production-ready",
+                title: "Francisco Heitor Vasconcelos",
+                subtitle: "Backend Python Developer focused on APIs, automation, data modeling and reliable systems for real business environments.",
+                tags: ["Python", "Django", "FastAPI", "PostgreSQL", "Celery", "Docker", "CI/CD"],
+                projectsCta: "View projects",
+                contactCta: "Technical contact"
+            },
+            about: {
+                title: "About",
+                text: "I build backend services, integrations and automations with attention to API contracts, data persistence, asynchronous queues and production maintenance. My focus is turning business requirements into organized, testable and operable software.",
+                systemTitle: "runtime.profile",
+                facts: [
+                    ["role", "Backend Python Developer"],
+                    ["focus", "APIs, data, automation, reliability"],
+                    ["style", "clean architecture, direct communication"],
+                    ["delivery", "production-ready software"]
+                ]
+            },
+            skills: {
+                title: "Stack and practices",
+                groups: [
+                    {
+                        name: "Backend",
+                        items: ["Python", "Django", "Flask", "FastAPI", "REST APIs", "microservices"]
+                    },
+                    {
+                        name: "Data",
+                        items: ["PostgreSQL", "Redis", "MongoDB", "data modeling", "queries and persistence"]
+                    },
+                    {
+                        name: "Messaging and automation",
+                        items: ["Celery", "RabbitMQ", "async workers", "automated routines", "integrations"]
+                    },
+                    {
+                        name: "Delivery and engineering",
+                        items: ["Docker", "Git/GitHub", "CI/CD", "testability", "observability", "developer experience"]
+                    }
+                ]
+            },
+            experience: {
+                title: "Experience",
+                items: [
+                    {
+                        role: "Backend Python Developer",
+                        company: "Ouronova",
+                        period: "2023 - Present",
+                        summary: "Developing web applications, automations and backend routines with Django, databases and Celery queues.",
+                        bullets: [
+                            "Implemented backend services and flows guided by business rules.",
+                            "Used databases and asynchronous processing for recurring operations.",
+                            "Collaborated on systems that require maintenance, evolution and reliability."
+                        ]
+                    },
+                    {
+                        role: "Software Engineer",
+                        company: "Sidia Institute of Science and Technology",
+                        period: "2022 - 2023",
+                        summary: "Developed automations and web applications with Django and Flask, administered databases and integrated distributed systems.",
+                        bullets: [
+                            "Built internal tools and automations to reduce manual work.",
+                            "Integrated systems and services with a focus on operational consistency.",
+                            "Worked in a technical environment with engineering demands and clear communication."
+                        ]
+                    }
+                ]
+            },
+            projects: {
+                title: "Projects",
+                items: [
+                    {
+                        title: "Wellnova.ai",
+                        type: "SaaS platform | Oil & Gas",
+                        problem: "Supports well integrity workflows, interventions and plug and abandonment campaigns with specialized software.",
+                        stack: ["Python", "Django", "technical data", "automation", "integrations"],
+                        decisions: [
+                            "Backend flow modeling for complex domain processes.",
+                            "Data organization and routines to support technical analysis.",
+                            "Emphasis on reliability, traceability and continuous evolution."
+                        ],
+                        impact: "Shows experience with a real product, domain-specific engineering and backend applied to critical operations.",
+                        links: [{ label: "Site", href: "https://wellnova.ai/" }]
+                    },
+                    {
+                        title: "Currency Exchange API",
+                        type: "Backend API | FastAPI",
+                        problem: "Provides exchange rates, history and currency conversion through a clear and reusable API.",
+                        stack: ["Python", "FastAPI", "REST", "external integration", "historical data"],
+                        decisions: [
+                            "Simple HTTP contracts for query and conversion flows.",
+                            "Separation between external integration, business rules and API response.",
+                            "Focus on documentation, predictability and consumption by other services."
+                        ],
+                        impact: "Demonstrates API design, external data integration and attention to developer experience.",
+                        links: [{ label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }]
+                    }
+                ]
+            },
+            education: {
+                title: "Education",
+                items: ["Bachelor in Electrical Engineering - Federal University of Ceará (2014 - 2019)"]
+            },
+            certification: {
+                title: "Certification",
+                items: [
+                    {
+                        label: "EF SET Certificate: C2 Proficient in English - EF Standard English Test 2025",
+                        href: "https://cert.efset.org/9tNcDt"
+                    }
+                ]
+            },
+            contact: {
+                title: "Contact",
+                copy: "Open to technical conversations about backend, APIs, integrations, automation and production systems.",
+                links: [
+                    ["Email", `mailto:${profileLinks.email}`],
+                    ["LinkedIn", profileLinks.linkedin],
+                    ["GitHub", profileLinks.github]
+                ]
+            },
+            footer: "© 2026 Francisco Heitor Vasconcelos. Backend portfolio built with plain HTML, CSS and JavaScript."
+        }
+    };
+
+    const state = {
+        language: localStorage.getItem("portfolio-language") || "pt-br",
+        theme: localStorage.getItem("portfolio-theme") || "dark",
+        typingTimeout: null
+    };
+
+    const elements = {
+        html: document.documentElement,
+        languageToggle: document.getElementById("language-toggle"),
+        themeToggle: document.getElementById("theme-toggle"),
+        heroEyebrow: document.getElementById("hero-eyebrow"),
+        heroTitle: document.getElementById("hero-title"),
+        heroSubtitle: document.getElementById("hero-subtitle"),
+        heroTags: document.getElementById("hero-tags"),
+        projectsCta: document.getElementById("projects-cta"),
+        contactCta: document.getElementById("contact-cta"),
+        aboutTitle: document.getElementById("about-title"),
+        aboutText: document.getElementById("about-text"),
+        systemTitle: document.getElementById("system-title"),
+        systemProfile: document.getElementById("system-profile"),
+        skillsTitle: document.getElementById("skills-title"),
+        skillsGrid: document.getElementById("skills-grid"),
+        experienceTitle: document.getElementById("experience-title"),
+        experienceList: document.getElementById("experience-list"),
+        projectsTitle: document.getElementById("projects-title"),
+        projectList: document.getElementById("project-list"),
+        educationTitle: document.getElementById("education-title"),
+        educationList: document.getElementById("education-list"),
+        certificationTitle: document.getElementById("certification-title"),
+        certificationList: document.getElementById("certification-list"),
+        contactTitle: document.getElementById("contact-title"),
+        contactCopy: document.getElementById("contact-copy"),
+        contactList: document.getElementById("contact-list"),
+        footerText: document.getElementById("footer-text")
+    };
+
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text) element.textContent = text;
+        return element;
+    }
+
+    function createExternalLink(label, href, className) {
+        const link = createElement("a", className, label);
+        link.href = href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        return link;
+    }
+
+    function renderList(container, items) {
+        container.innerHTML = "";
+        items.forEach((item) => {
+            container.appendChild(createElement("li", "", item));
+        });
+    }
+
+    function typeText(text) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        clearTimeout(state.typingTimeout);
+        elements.aboutText.textContent = "";
+
+        if (prefersReducedMotion) {
+            elements.aboutText.textContent = text;
+            return;
+        }
+
         let index = 0;
-        element.innerHTML = "";
-        function type() {
+        function tick() {
+            elements.aboutText.textContent += text.charAt(index);
+            index += 1;
             if (index < text.length) {
-                element.innerHTML += text.charAt(index);
-                index++;
-                typingTimeout = setTimeout(type, 20);
-            } else {
-                isTyping = false;
-                if (callback) callback();
+                state.typingTimeout = setTimeout(tick, 12);
             }
         }
-        if (isTyping) {
-            clearTimeout(typingTimeout);
-        }
-        isTyping = true;
-        type();
+        tick();
     }
-  
-    // Renderiza a lista de projetos
-    function renderProjects() {
-        const projects = texts[currentLanguage].projects;
-        projectListElement.innerHTML = "";
-        projects.forEach((project) => {
-            const projectItem = document.createElement("div");
-            projectItem.className = "project-item";
-            const cmdSpan = document.createElement("span");
-            cmdSpan.className = "cmd";
-            cmdSpan.textContent = `~/projetos/${project.title}`;
-            const descriptionParagraph = document.createElement("p");
-            descriptionParagraph.textContent = project.description;
-            const projectLink = document.createElement("a");
-            projectLink.href = project.linkHref;
-            projectLink.target = "_blank";
-            projectLink.className = "project-link";
-            projectLink.innerHTML = `<i class="${project.iconClass}"></i> ${project.linkText}`;
-            projectItem.appendChild(cmdSpan);
-            projectItem.appendChild(descriptionParagraph);
-            projectItem.appendChild(projectLink);
-            projectListElement.appendChild(projectItem);
+
+    function renderHero(content) {
+        elements.heroEyebrow.textContent = `> ${content.eyebrow}`;
+        elements.heroTitle.textContent = content.title;
+        elements.heroSubtitle.textContent = content.subtitle;
+        elements.projectsCta.textContent = content.projectsCta;
+        elements.contactCta.textContent = content.contactCta;
+        elements.heroTags.innerHTML = "";
+        content.tags.forEach((tag) => {
+            elements.heroTags.appendChild(createElement("span", "tag", tag));
         });
     }
-  
-    // Atualiza todos os textos e seções
+
+    function renderAbout(content) {
+        elements.aboutTitle.textContent = `> ${content.title}`;
+        elements.systemTitle.textContent = content.systemTitle;
+        elements.systemProfile.innerHTML = "";
+        content.facts.forEach(([key, value]) => {
+            elements.systemProfile.appendChild(createElement("dt", "", key));
+            elements.systemProfile.appendChild(createElement("dd", "", value));
+        });
+        typeText(content.text);
+    }
+
+    function renderSkills(content) {
+        elements.skillsTitle.textContent = `> ${content.title}`;
+        elements.skillsGrid.innerHTML = "";
+        content.groups.forEach((group) => {
+            const card = createElement("article", "skill-card");
+            card.appendChild(createElement("h3", "", group.name));
+            const list = createElement("ul");
+            renderList(list, group.items);
+            card.appendChild(list);
+            elements.skillsGrid.appendChild(card);
+        });
+    }
+
+    function renderExperience(content) {
+        elements.experienceTitle.textContent = `> ${content.title}`;
+        elements.experienceList.innerHTML = "";
+        content.items.forEach((item) => {
+            const card = createElement("article", "experience-item");
+            const header = createElement("header");
+            const heading = createElement("h3", "", `${item.role} @ ${item.company}`);
+            const period = createElement("span", "period", item.period);
+            const summary = createElement("p", "", item.summary);
+            const list = createElement("ul", "clean-list");
+
+            renderList(list, item.bullets);
+            header.appendChild(heading);
+            header.appendChild(period);
+            card.appendChild(header);
+            card.appendChild(summary);
+            card.appendChild(list);
+            elements.experienceList.appendChild(card);
+        });
+    }
+
+    function renderProjects(content) {
+        elements.projectsTitle.textContent = `> ${content.title}`;
+        elements.projectList.innerHTML = "";
+        content.items.forEach((project) => {
+            const card = createElement("article", "project-card");
+            const title = createElement("h3", "", project.title);
+            const meta = createElement("span", "project-meta", project.type);
+            const problem = createElement("p", "", project.problem);
+            const stack = createElement("div", "stack-list");
+            const decisions = createElement("ul", "decision-list");
+            const impact = createElement("p", "", project.impact);
+            const actions = createElement("div", "project-actions");
+
+            project.stack.forEach((item) => {
+                stack.appendChild(createElement("span", "stack-tag", item));
+            });
+            renderList(decisions, project.decisions);
+            project.links.forEach((link) => {
+                actions.appendChild(createExternalLink(link.label, link.href, "project-link"));
+            });
+
+            card.appendChild(meta);
+            card.appendChild(title);
+            card.appendChild(problem);
+            card.appendChild(stack);
+            card.appendChild(decisions);
+            card.appendChild(impact);
+            card.appendChild(actions);
+            elements.projectList.appendChild(card);
+        });
+    }
+
+    function renderEducation(content) {
+        elements.educationTitle.textContent = `> ${content.title}`;
+        renderList(elements.educationList, content.items);
+    }
+
+    function renderCertification(content) {
+        elements.certificationTitle.textContent = `> ${content.title}`;
+        elements.certificationList.innerHTML = "";
+        content.items.forEach((item) => {
+            const listItem = createElement("li");
+            listItem.appendChild(createExternalLink(item.label, item.href, ""));
+            elements.certificationList.appendChild(listItem);
+        });
+    }
+
+    function renderContact(content) {
+        elements.contactTitle.textContent = `> ${content.title}`;
+        elements.contactCopy.textContent = content.copy;
+        elements.contactList.innerHTML = "";
+        content.links.forEach(([label, href]) => {
+            const listItem = createElement("li");
+            listItem.appendChild(createExternalLink(label, href, ""));
+            elements.contactList.appendChild(listItem);
+        });
+    }
+
+    function applyTheme() {
+        const isLight = state.theme === "light";
+        elements.html.classList.toggle("light-theme", isLight);
+        elements.themeToggle.setAttribute("aria-pressed", String(isLight));
+        elements.themeToggle.textContent = isLight ? texts[state.language].themeDark : texts[state.language].themeLight;
+    }
+
     function updateTexts() {
-        const currentTexts = texts[currentLanguage];
-  
-        // Header
-        headerH1.textContent = `> ${currentTexts.header}`;
-        headerP.textContent = currentTexts.subHeader;
-  
-        // Sobre Mim
-        typeEffect(currentTexts.about, sobreMimElement);
-  
-        // Skills / Competências Técnicas
-        document.getElementById("skills-title").textContent = `> ${currentTexts.skills.title}`;
-        const skillsList = document.getElementById("skills-list");
-        skillsList.innerHTML = "";
-        currentTexts.skills.items.forEach(skill => {
-            const li = document.createElement("li");
-            li.textContent = skill;
-            skillsList.appendChild(li);
-        });
-  
-        // Experiência
-        document.getElementById("experience-title").textContent = `> ${currentTexts.experience.title}`;
-        const expList = document.getElementById("experience-list");
-        expList.innerHTML = "";
-        currentTexts.experience.items.forEach(exp => {
-            const expDiv = document.createElement("div");
-            expDiv.className = "experience-item";
-            expDiv.innerHTML = `<strong>${exp.role}</strong> @ ${exp.company} (${exp.period})<br>${exp.description}`;
-            expList.appendChild(expDiv);
-        });
-  
-        // Projetos
-        renderProjects();
-  
-        // Educação
-        document.getElementById("education-title").textContent = `> ${currentTexts.education.title}`;
-        const eduList = document.getElementById("education-list");
-        eduList.innerHTML = "";
-        currentTexts.education.items.forEach(edu => {
-            const li = document.createElement("li");
-            li.innerHTML = `<strong>${edu.degree}</strong> - ${edu.institution} (${edu.period})`;
-            eduList.appendChild(li);
-        });
-  
-        // Certificação
-        document.getElementById("certification-title").textContent = `> ${currentTexts.certification.title}`;
-        const certList = document.getElementById("certification-list");
-        certList.innerHTML = "";
-        currentTexts.certification.items.forEach(cert => {
-            const li = document.createElement("li");
-            li.innerHTML = `<strong>${cert.name}</strong>: ${cert.detail} <a href="${cert.link}" target="_blank">Ver Certificado</a>`;
-            certList.appendChild(li);
-        });
-  
-        // Contato
-        const contactList = document.getElementById("contact-list");
-        contactList.innerHTML = `
-            <li>
-                <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:${currentTexts.email}" class="social-link" target="_blank">
-                   ${currentTexts.email}
-                </a>
-            </li>
-            <li>
-                <i class="devicon-linkedin-plain"></i>
-                <a href="https://www.linkedin.com/in/heitor-vasconcelos-472028121/" class="social-link" target="_blank">
-                   ${currentTexts.linkedin}
-                </a>
-            </li>
-            <li>
-                <i class="devicon-github-original"></i>
-                <a href="https://github.com/fhva29" class="social-link" target="_blank">
-                   ${currentTexts.github}
-                </a>
-            </li>
-        `;
-  
-        // Botão de idioma
-        languageToggleButton.textContent = currentTexts.button;
+        const current = texts[state.language];
+        elements.html.lang = current.lang;
+        elements.languageToggle.textContent = current.button;
+        renderHero(current.hero);
+        renderAbout(current.about);
+        renderSkills(current.skills);
+        renderExperience(current.experience);
+        renderProjects(current.projects);
+        renderEducation(current.education);
+        renderCertification(current.certification);
+        renderContact(current.contact);
+        elements.footerText.textContent = current.footer;
+        applyTheme();
     }
-  
-    // Alterna idioma
-    function toggleLanguage() {
-        currentLanguage = currentLanguage === "pt-br" ? "en" : "pt-br";
+
+    elements.languageToggle.addEventListener("click", () => {
+        state.language = state.language === "pt-br" ? "en" : "pt-br";
+        localStorage.setItem("portfolio-language", state.language);
         updateTexts();
-    }
-  
-    // Alterna tema
-    function toggleTheme() {
-        document.documentElement.classList.toggle("light-theme");
-        themeToggleButton.textContent = document.documentElement.classList.contains("light-theme") ? "🌞" : "🌙";
-    }
-  
-    languageToggleButton.addEventListener("click", toggleLanguage);
-    themeToggleButton.addEventListener("click", toggleTheme);
+    });
+
+    elements.themeToggle.addEventListener("click", () => {
+        state.theme = state.theme === "dark" ? "light" : "dark";
+        localStorage.setItem("portfolio-theme", state.theme);
+        applyTheme();
+    });
+
     updateTexts();
-  });
-  
+});
