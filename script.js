@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             about: {
                 title: "Sobre",
-                text: "Atuo construindo serviços backend, integrações e automações com atenção a contratos de API, persistência de dados, filas assíncronas e manutenção em produção. Meu foco é transformar requisitos de negócio em software organizado, testável e fácil de operar.",
-                systemTitle: "$ runtime.profile",
+                portraitAlt: "Retrato em pixel art de Heitor",
                 facts: [
                     ["player", "Heitor"],
                     ["lvl", "4 · quatro anos construindo"],
@@ -168,8 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             about: {
                 title: "About",
-                text: "I build backend services, integrations and automations with attention to API contracts, data persistence, asynchronous queues and production maintenance. My focus is turning business requirements into organized, testable and operable software.",
-                systemTitle: "$ runtime.profile",
+                portraitAlt: "Pixel-art portrait of Heitor",
                 facts: [
                     ["player", "Heitor"],
                     ["lvl", "4 · four years building"],
@@ -288,8 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const state = {
         language: localStorage.getItem("portfolio-language") || "pt-br",
-        theme: localStorage.getItem("portfolio-theme") || "dark",
-        typingTimeout: null
+        theme: localStorage.getItem("portfolio-theme") || "dark"
     };
 
     const elements = {
@@ -305,8 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heroTags: document.getElementById("hero-tags"),
         projectsCta: document.getElementById("projects-cta"),
         aboutTitle: document.getElementById("about-title"),
-        aboutText: document.getElementById("about-text"),
-        systemTitle: document.getElementById("system-title"),
+        aboutPortrait: document.getElementById("about-portrait"),
         systemProfile: document.getElementById("system-profile"),
         inventoryLabel: document.getElementById("inventory-label"),
         systemInventory: document.getElementById("system-inventory"),
@@ -349,27 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function typeText(text) {
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        clearTimeout(state.typingTimeout);
-        elements.aboutText.textContent = "";
-
-        if (prefersReducedMotion) {
-            elements.aboutText.textContent = text;
-            return;
-        }
-
-        let index = 0;
-        function tick() {
-            elements.aboutText.textContent += text.charAt(index);
-            index += 1;
-            if (index < text.length) {
-                state.typingTimeout = setTimeout(tick, 12);
-            }
-        }
-        tick();
-    }
-
     function renderNav(content) {
         elements.siteNav.setAttribute("aria-label", content.ariaLabel);
         elements.navLinks.innerHTML = "";
@@ -395,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderAbout(content) {
         elements.aboutTitle.textContent = `> ${content.title}`;
-        elements.systemTitle.textContent = content.systemTitle;
+        elements.aboutPortrait.alt = content.portraitAlt;
         elements.systemProfile.innerHTML = "";
         content.facts.forEach(([key, value]) => {
             elements.systemProfile.appendChild(createElement("dt", "", key));
@@ -404,7 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
         elements.inventoryLabel.textContent = content.inventoryLabel;
         renderList(elements.systemInventory, content.inventory);
         elements.systemSpecial.textContent = content.special;
-        typeText(content.text);
     }
 
     function renderSkills(content) {
