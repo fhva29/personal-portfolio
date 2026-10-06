@@ -51,15 +51,24 @@
   </header>
 
   <main class="page-shell" id="main-content">
-    <section class="terminal-panel about-grid" id="about" aria-labelledby="about-title">
-      <div>
-        <h2 class="prompt" id="about-title"></h2>
-        <p class="typing-text" id="about-text"></p>
-      </div>
-      <aside class="system-card" aria-labelledby="system-title">
-        <h2 id="system-title"></h2>
-        <dl id="system-profile"></dl>
-      </aside>
+    <section class="terminal-panel about-sheet" id="about" aria-labelledby="about-title">
+      <h2 class="prompt" id="about-title"></h2>
+      <article class="character-card">
+        <img
+          class="character-portrait"
+          id="about-portrait"
+          src="src/heitor-pixel.png"
+          width="512"
+          height="512"
+          alt=""
+        >
+        <div class="character-stats">
+          <dl id="system-profile"></dl>
+          <p class="profile-label" id="inventory-label"></p>
+          <ul class="clean-list profile-inventory" id="system-inventory"></ul>
+          <p class="profile-special" id="system-special"></p>
+        </div>
+      </article>
     </section>
 
     <section class="terminal-panel" aria-labelledby="skills-title">
