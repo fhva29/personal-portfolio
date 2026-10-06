@@ -414,7 +414,8 @@ a {
 }
 
 .project-details {
-    margin: 0;
+    margin: 0.45rem 0 0.2rem;
+    padding: 0.55rem 0.35rem 0.45rem;
 }
 
 .project-details summary {
@@ -422,7 +423,8 @@ a {
     color: var(--prompt-color);
     font-size: 0.85rem;
     font-weight: 600;
-    list-style-position: outside;
+    list-style-position: inside;
+    padding: 0.1rem 0;
 }
 
 .project-details summary:hover,
