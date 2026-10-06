@@ -14,10 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
             hero: {
                 eyebrow: "backend.systems -- production-ready",
                 title: "Francisco Heitor Vasconcelos",
-                subtitle: "Desenvolvedor Backend Python focado em APIs, automações, modelagem de dados e sistemas confiáveis para ambientes reais de negócio.",
-                tags: ["Python", "Django", "FastAPI", "PostgreSQL", "Celery", "Docker", "CI/CD"],
-                projectsCta: "Ver projetos",
-                contactCta: "Contato técnico"
+                subtitle: "Backend Python. APIs, filas e software que aguenta produção.",
+                tags: ["Python", "Django", "FastAPI", "Celery"],
+                projectsCta: "Ver projetos"
             },
             about: {
                 title: "Sobre",
@@ -141,10 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
             hero: {
                 eyebrow: "backend.systems -- production-ready",
                 title: "Francisco Heitor Vasconcelos",
-                subtitle: "Backend Python Developer focused on APIs, automation, data modeling and reliable systems for real business environments.",
-                tags: ["Python", "Django", "FastAPI", "PostgreSQL", "Celery", "Docker", "CI/CD"],
-                projectsCta: "View projects",
-                contactCta: "Technical contact"
+                subtitle: "Backend Python. APIs, queues, and software that holds up in production.",
+                tags: ["Python", "Django", "FastAPI", "Celery"],
+                projectsCta: "View projects"
             },
             about: {
                 title: "About",
@@ -277,7 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
         heroSubtitle: document.getElementById("hero-subtitle"),
         heroTags: document.getElementById("hero-tags"),
         projectsCta: document.getElementById("projects-cta"),
-        contactCta: document.getElementById("contact-cta"),
         aboutTitle: document.getElementById("about-title"),
         aboutText: document.getElementById("about-text"),
         systemTitle: document.getElementById("system-title"),
@@ -346,7 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
         elements.heroTitle.textContent = content.title;
         elements.heroSubtitle.textContent = content.subtitle;
         elements.projectsCta.textContent = content.projectsCta;
-        elements.contactCta.textContent = content.contactCta;
         elements.heroTags.innerHTML = "";
         content.tags.forEach((tag) => {
             elements.heroTags.appendChild(createElement("span", "tag", tag));
