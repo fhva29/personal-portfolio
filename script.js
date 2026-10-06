@@ -284,6 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const elements = {
         html: document.documentElement,
+        themeColor: document.querySelector('meta[name="theme-color"]'),
         languageToggle: document.getElementById("language-toggle"),
         themeToggle: document.getElementById("theme-toggle"),
         siteNav: document.getElementById("site-nav"),
@@ -486,6 +487,9 @@ document.addEventListener("DOMContentLoaded", () => {
         elements.html.classList.toggle("light-theme", isLight);
         elements.themeToggle.setAttribute("aria-pressed", String(isLight));
         elements.themeToggle.textContent = isLight ? texts[state.language].themeDark : texts[state.language].themeLight;
+        if (elements.themeColor) {
+            elements.themeColor.setAttribute("content", isLight ? "#e8dfcc" : "#1a1714");
+        }
     }
 
     function updateTexts() {
