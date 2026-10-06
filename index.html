@@ -18,15 +18,23 @@
   <a class="skip-link" href="#main-content">Pular para conteúdo</a>
 
   <header class="site-header" aria-label="Cabeçalho do portfolio">
-    <nav class="topbar" aria-label="Controles do site">
+    <nav class="topbar" id="site-nav" aria-label="Navegação do site">
       <div class="terminal-dots" aria-hidden="true">
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
-      <div class="controls">
-        <button id="language-toggle" class="control-btn" type="button">EN</button>
-        <button id="theme-toggle" class="control-btn" type="button" aria-pressed="false">Light</button>
+      <div class="topbar-actions">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">&gt; sobre</a></li>
+          <li><a href="#experience">&gt; experiência</a></li>
+          <li><a href="#projects">&gt; projetos</a></li>
+          <li><a href="#contact">&gt; contato</a></li>
+        </ul>
+        <div class="controls">
+          <button id="language-toggle" class="control-btn" type="button">EN</button>
+          <button id="theme-toggle" class="control-btn" type="button" aria-pressed="false">Light</button>
+        </div>
       </div>
     </nav>
 
@@ -42,7 +50,7 @@
   </header>
 
   <main class="page-shell" id="main-content">
-    <section class="terminal-panel about-grid" aria-labelledby="about-title">
+    <section class="terminal-panel about-grid" id="about" aria-labelledby="about-title">
       <div>
         <h2 class="prompt" id="about-title"></h2>
         <p class="typing-text" id="about-text"></p>
@@ -58,7 +66,7 @@
       <div class="skills-grid" id="skills-grid"></div>
     </section>
 
-    <section class="terminal-panel" aria-labelledby="experience-title">
+    <section class="terminal-panel" id="experience" aria-labelledby="experience-title">
       <h2 class="prompt" id="experience-title"></h2>
       <div class="timeline" id="experience-list"></div>
     </section>

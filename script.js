@@ -11,6 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
             button: "EN",
             themeLight: "Light",
             themeDark: "Dark",
+            nav: {
+                ariaLabel: "Navegação do site",
+                items: [
+                    { href: "#about", label: "sobre" },
+                    { href: "#experience", label: "experiência" },
+                    { href: "#projects", label: "projetos" },
+                    { href: "#contact", label: "contato" }
+                ]
+            },
             hero: {
                 eyebrow: "backend.systems -- production-ready",
                 title: "Francisco Heitor Vasconcelos",
@@ -136,6 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
             button: "PT-BR",
             themeLight: "Light",
             themeDark: "Dark",
+            nav: {
+                ariaLabel: "Site navigation",
+                items: [
+                    { href: "#about", label: "about" },
+                    { href: "#experience", label: "experience" },
+                    { href: "#projects", label: "projects" },
+                    { href: "#contact", label: "contact" }
+                ]
+            },
             hero: {
                 eyebrow: "backend.systems -- production-ready",
                 title: "Francisco Heitor Vasconcelos",
@@ -268,6 +286,8 @@ document.addEventListener("DOMContentLoaded", () => {
         html: document.documentElement,
         languageToggle: document.getElementById("language-toggle"),
         themeToggle: document.getElementById("theme-toggle"),
+        siteNav: document.getElementById("site-nav"),
+        navLinks: document.getElementById("nav-links"),
         heroEyebrow: document.getElementById("hero-eyebrow"),
         heroTitle: document.getElementById("hero-title"),
         heroSubtitle: document.getElementById("hero-subtitle"),
@@ -334,6 +354,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         tick();
+    }
+
+    function renderNav(content) {
+        elements.siteNav.setAttribute("aria-label", content.ariaLabel);
+        elements.navLinks.innerHTML = "";
+        content.items.forEach((item) => {
+            const listItem = createElement("li");
+            const link = createElement("a", "", `> ${item.label}`);
+            link.href = item.href;
+            listItem.appendChild(link);
+            elements.navLinks.appendChild(listItem);
+        });
     }
 
     function renderHero(content) {
@@ -460,6 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const current = texts[state.language];
         elements.html.lang = current.lang;
         elements.languageToggle.textContent = current.button;
+        renderNav(current.nav);
         renderHero(current.hero);
         renderAbout(current.about);
         renderSkills(current.skills);
