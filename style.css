@@ -407,7 +407,7 @@ a {
     margin: 0;
 }
 
-.project-proof {
+.project-card .project-proof {
     margin: 0;
     color: var(--cmd-color);
     font-weight: 600;
