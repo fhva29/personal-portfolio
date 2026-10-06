@@ -380,6 +380,39 @@ a {
     margin: 0;
 }
 
+.profile-label {
+    margin: 0.85rem 0 0.15rem;
+    color: var(--muted-color);
+    font-size: 0.92rem;
+}
+
+.profile-label::before {
+    content: "$ ";
+    color: var(--prompt-color);
+}
+
+.profile-inventory {
+    margin: 0;
+}
+
+.profile-inventory li {
+    color: var(--text-color);
+}
+
+.profile-special {
+    margin: 0.9rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-color);
+    color: var(--prompt-color);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.profile-special::before {
+    content: "> ";
+    color: var(--prompt-color);
+}
+
 .skills-grid,
 .project-grid {
     display: grid;

@@ -30,13 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
             about: {
                 title: "Sobre",
                 text: "Atuo construindo serviços backend, integrações e automações com atenção a contratos de API, persistência de dados, filas assíncronas e manutenção em produção. Meu foco é transformar requisitos de negócio em software organizado, testável e fácil de operar.",
-                systemTitle: "runtime.profile",
+                systemTitle: "$ runtime.profile",
                 facts: [
-                    ["role", "Backend Python Developer"],
-                    ["focus", "APIs, dados, automação, confiabilidade"],
-                    ["style", "arquitetura limpa, comunicação objetiva"],
-                    ["delivery", "software pronto para produção"]
-                ]
+                    ["player", "Heitor"],
+                    ["lvl", "4 · quatro anos construindo"],
+                    ["class", "backend"]
+                ],
+                inventoryLabel: "inventory",
+                inventory: [
+                    "wellnova — produção · oil & gas",
+                    "sidia — automação interna + integração"
+                ],
+                special: "Me dá o fluxo de negócio. Eu devolvo API, fila e produção estável."
             },
             skills: {
                 title: "Stack e práticas",
@@ -164,13 +169,18 @@ document.addEventListener("DOMContentLoaded", () => {
             about: {
                 title: "About",
                 text: "I build backend services, integrations and automations with attention to API contracts, data persistence, asynchronous queues and production maintenance. My focus is turning business requirements into organized, testable and operable software.",
-                systemTitle: "runtime.profile",
+                systemTitle: "$ runtime.profile",
                 facts: [
-                    ["role", "Backend Python Developer"],
-                    ["focus", "APIs, data, automation, reliability"],
-                    ["style", "clean architecture, direct communication"],
-                    ["delivery", "production-ready software"]
-                ]
+                    ["player", "Heitor"],
+                    ["lvl", "4 · four years building"],
+                    ["class", "backend"]
+                ],
+                inventoryLabel: "inventory",
+                inventory: [
+                    "wellnova — production · oil & gas",
+                    "sidia — internal automation + integration"
+                ],
+                special: "Give me the business flow. I'll return an API, a queue, and stable production."
             },
             skills: {
                 title: "Stack and practices",
@@ -298,6 +308,9 @@ document.addEventListener("DOMContentLoaded", () => {
         aboutText: document.getElementById("about-text"),
         systemTitle: document.getElementById("system-title"),
         systemProfile: document.getElementById("system-profile"),
+        inventoryLabel: document.getElementById("inventory-label"),
+        systemInventory: document.getElementById("system-inventory"),
+        systemSpecial: document.getElementById("system-special"),
         skillsTitle: document.getElementById("skills-title"),
         skillsGrid: document.getElementById("skills-grid"),
         experienceTitle: document.getElementById("experience-title"),
@@ -388,6 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
             elements.systemProfile.appendChild(createElement("dt", "", key));
             elements.systemProfile.appendChild(createElement("dd", "", value));
         });
+        elements.inventoryLabel.textContent = content.inventoryLabel;
+        renderList(elements.systemInventory, content.inventory);
+        elements.systemSpecial.textContent = content.special;
         typeText(content.text);
     }
 
