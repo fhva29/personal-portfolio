@@ -403,6 +403,40 @@ a {
     text-transform: uppercase;
 }
 
+.project-pitch {
+    margin: 0;
+}
+
+.project-card .project-proof {
+    margin: 0;
+    color: var(--cmd-color);
+    font-weight: 600;
+}
+
+.project-details {
+    margin: 0.45rem 0 0.2rem;
+    padding: 0.55rem 0.35rem 0.45rem;
+}
+
+.project-details summary {
+    cursor: pointer;
+    color: var(--prompt-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    list-style-position: inside;
+    padding: 0.1rem 0;
+}
+
+.project-details summary:hover,
+.project-details summary:focus-visible {
+    color: var(--accent-color);
+    outline: none;
+}
+
+.project-details .decision-list {
+    margin-top: 0.55rem;
+}
+
 .decision-list li {
     color: var(--muted-color);
     font-size: 0.93rem;

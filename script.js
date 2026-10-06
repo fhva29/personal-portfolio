@@ -79,32 +79,31 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             projects: {
                 title: "Projetos",
+                detailsLabel: "Decisões",
                 items: [
                     {
                         title: "Wellnova.ai",
                         type: "Plataforma SaaS | Oil & Gas",
-                        problem: "Apoia fluxos de integridade de poços, intervenções e campanhas de abandono com software especializado.",
-                        stack: ["Python", "Django", "dados técnicos", "automações", "integrações"],
+                        pitch: "Apoia fluxos de integridade de poços, intervenções e campanhas de abandono com software especializado.",
+                        proof: "produção · oil & gas",
                         decisions: [
                             "Modelagem de fluxos backend para processos complexos de domínio.",
                             "Organização de dados e rotinas para suportar análise técnica.",
                             "Ênfase em confiabilidade, rastreabilidade e evolução contínua."
                         ],
-                        impact: "Demonstra experiência com produto real, domínio técnico específico e backend aplicado a operação crítica.",
-                        links: [{ label: "Site", href: "https://wellnova.ai/" }]
+                        link: { label: "Site", href: "https://wellnova.ai/" }
                     },
                     {
                         title: "Currency Exchange API",
                         type: "API backend | FastAPI",
-                        problem: "Fornece taxas de câmbio, histórico e conversões de moedas por meio de uma API clara e reutilizável.",
-                        stack: ["Python", "FastAPI", "REST", "integração externa", "dados históricos"],
+                        pitch: "Fornece taxas de câmbio, histórico e conversões de moedas por meio de uma API clara e reutilizável.",
+                        proof: "API pública · FastAPI",
                         decisions: [
                             "Contratos HTTP simples para consulta e conversão.",
                             "Separação entre integração externa, regra de negócio e resposta da API.",
                             "Foco em documentação, previsibilidade e consumo por outros serviços."
                         ],
-                        impact: "Mostra construção de API, integração com dados externos e preocupação com developer experience.",
-                        links: [{ label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }]
+                        link: { label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }
                     }
                 ]
             },
@@ -205,32 +204,31 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             projects: {
                 title: "Projects",
+                detailsLabel: "Decisions",
                 items: [
                     {
                         title: "Wellnova.ai",
                         type: "SaaS platform | Oil & Gas",
-                        problem: "Supports well integrity workflows, interventions and plug and abandonment campaigns with specialized software.",
-                        stack: ["Python", "Django", "technical data", "automation", "integrations"],
+                        pitch: "Supports well integrity workflows, interventions and plug and abandonment campaigns with specialized software.",
+                        proof: "production · oil & gas",
                         decisions: [
                             "Backend flow modeling for complex domain processes.",
                             "Data organization and routines to support technical analysis.",
                             "Emphasis on reliability, traceability and continuous evolution."
                         ],
-                        impact: "Shows experience with a real product, domain-specific engineering and backend applied to critical operations.",
-                        links: [{ label: "Site", href: "https://wellnova.ai/" }]
+                        link: { label: "Site", href: "https://wellnova.ai/" }
                     },
                     {
                         title: "Currency Exchange API",
                         type: "Backend API | FastAPI",
-                        problem: "Provides exchange rates, history and currency conversion through a clear and reusable API.",
-                        stack: ["Python", "FastAPI", "REST", "external integration", "historical data"],
+                        pitch: "Provides exchange rates, history and currency conversion through a clear and reusable API.",
+                        proof: "public API · FastAPI",
                         decisions: [
                             "Simple HTTP contracts for query and conversion flows.",
                             "Separation between external integration, business rules and API response.",
                             "Focus on documentation, predictability and consumption by other services."
                         ],
-                        impact: "Demonstrates API design, external data integration and attention to developer experience.",
-                        links: [{ label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }]
+                        link: { label: "GitHub", href: "https://github.com/fhva29/currency-exchange-api" }
                     }
                 ]
             },
@@ -401,26 +399,25 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = createElement("article", "project-card");
             const title = createElement("h3", "", project.title);
             const meta = createElement("span", "project-meta", project.type);
-            const problem = createElement("p", "", project.problem);
-            const stack = createElement("div", "stack-list");
-            const decisions = createElement("ul", "decision-list");
-            const impact = createElement("p", "", project.impact);
+            const pitch = createElement("p", "project-pitch", project.pitch);
+            const proof = createElement("p", "project-proof", project.proof);
             const actions = createElement("div", "project-actions");
-
-            project.stack.forEach((item) => {
-                stack.appendChild(createElement("span", "stack-tag", item));
-            });
-            renderList(decisions, project.decisions);
-            project.links.forEach((link) => {
-                actions.appendChild(createExternalLink(link.label, link.href, "project-link"));
-            });
 
             card.appendChild(meta);
             card.appendChild(title);
-            card.appendChild(problem);
-            card.appendChild(stack);
-            card.appendChild(decisions);
-            card.appendChild(impact);
+            card.appendChild(pitch);
+            card.appendChild(proof);
+
+            if (project.decisions && project.decisions.length) {
+                const details = createElement("details", "project-details");
+                details.appendChild(createElement("summary", "", content.detailsLabel));
+                const decisions = createElement("ul", "decision-list");
+                renderList(decisions, project.decisions);
+                details.appendChild(decisions);
+                card.appendChild(details);
+            }
+
+            actions.appendChild(createExternalLink(project.link.label, project.link.href, "project-link"));
             card.appendChild(actions);
             elements.projectList.appendChild(card);
         });
